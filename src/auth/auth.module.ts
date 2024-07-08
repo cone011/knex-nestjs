@@ -6,6 +6,8 @@ import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { envs } from 'src/config';
+import { User } from './entities/user.entity';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   controllers: [AuthController],
@@ -13,6 +15,9 @@ import { envs } from 'src/config';
 
   imports: [
     PassportModule.register({ defaultStrategy: 'jwt' }),
+
+    //Se usa solo para ejectuar el seed
+    TypeOrmModule.forFeature([User]),
 
     JwtModule.registerAsync({
       imports: [ConfigModule],
@@ -28,6 +33,12 @@ import { envs } from 'src/config';
     }),
   ],
 
-  exports: [JwtStrategy, PassportModule, JwtModule],
+  exports: [
+    JwtStrategy,
+    PassportModule,
+    JwtModule,
+    //Se usa solo para ejectuar el seed
+    TypeOrmModule,
+  ],
 })
 export class AuthModule {}
