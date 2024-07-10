@@ -36,6 +36,13 @@ import { SeedModule } from './seed/seed.module';
           password: envs.dbPassword,
           database: envs.dbName,
         },
+        migrations: {
+          tableName: 'knex_migrations',
+        },
+        // add this
+        seeds: {
+          directory: './src/seeds',
+        },
       },
     }),
 
