@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: knex-nestjs
+  annotations:
+    github.com/project-slug: cone011/knex-nestjs
+spec:
+  type: other
+  lifecycle: unknown
+  owner: guests
